@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEMENPON!</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/img/logo.ico"/>
+    
+    <script src="./assets/js/main.js" defer></script>
+</head>
+<body>
+    <h1>ELEMENPON! 🔥💧🍃</h1>
+
+    <!-- Player select the pet -->
+    <section id="select-pet">
+        <h2>Choose your pet:</h2>
+
+        <input type="radio" name="pet" id="warmheart" />
+        <label for="warmheart">Warmheart</label>
+
+        <input type="radio" name="pet" id="sedgelam" />
+        <label for="sedgelam">Sedgelam</label>
+
+        <input type="radio" name="pet" id="venstino" />
+        <label for="venstino">Venstino</label>
+
+        <button id="btnPet">Select</button>
+    </section>
+    
+    <section id="select-attack">
+        <h2>Choose your attack:</h2>
+
+        <p>Your pet <span id="player-pet"></span> have <span id="player-lifes">3</span> lives</p>
+        <p>Enemy pet <span id="enemy-pet"></span> have <span id="enemy-lifes">3</span> lives</p>
+
+        <p>
+            <button id="btnFire">Fire 🔥</button>
+            <button id="btnWater">Water 💧</button>
+            <button id="btnPlant">Plant 🍃</button>
+        </p>
+    </section>
+
+    <section id="message">
+        <p id="messageP"></p>
+    </section>
+
+    <section id="restart">
+        <button id="btnRestart">Restart</button>
+    </section>
+
+</body>
+</html>
