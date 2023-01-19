@@ -8,8 +8,11 @@ let playerLifes = 3;
 let enemyLifes = 3;
 
 // GETTERS -------------------------------------
+    // Body
+    let bodyImg = document.getElementById('main')
+
     // Buttons
-    let btnPlayerPet = document.getElementById('btnPet');
+    let btnPlayerDrake = document.getElementById('btnDrake');
     let btnFire = document.getElementById('btnFire');
     let btnWater = document.getElementById('btnWater');
     let btnPlant = document.getElementById('btnPlant');
@@ -18,9 +21,33 @@ let enemyLifes = 3;
     // Sections
     let sectionAttackSelection = document.getElementById('select-attack')
 
+    // Groups
+    let btnDrakeBG = document.getElementsByName('drake');
+
 // EVENTS -------------------------------------
+    // Change background 
+    btnDrakeBG.forEach((element) => {
+        // Add an eventListener for each input
+        element.addEventListener('click', () => { 
+            if (element.id == 'warmheart') {
+                bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_fire.jpg')";
+                btnPlayerDrake.innerText = 'WARMHEART'
+            } else if (element.id == 'sedgelam') {
+                bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_water.jpg')";
+                btnPlayerDrake.innerText = 'SEDGELAM'
+            } else if (element.id == 'venstino') {
+                bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_plant.jpg')";
+                btnPlayerDrake.innerText = 'VENSTINO'
+            } else {
+                bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_main.jpg')";
+            }
+    
+            btnPlayerDrake.disabled = false
+        });
+    });
+
     // Buttons
-    btnPlayerPet.addEventListener('click', selectPlayerPet);
+    btnPlayerDrake.addEventListener('click', selectPlayerDrake);
 
     // Attacks
     btnFire.addEventListener('click', fireAttack);
@@ -32,52 +59,52 @@ let enemyLifes = 3;
 
 // STYLES
     sectionAttackSelection.style.display = 'none'
+    btnPlayerDrake.disabled = true
     btnRestart.style.display = 'none'
 
-
 // FUNCTIONS -------------------------------------
-// Select your pet
-function selectPlayerPet() {
-    let sectionPetSelection = document.getElementById('select-pet')
-    sectionPetSelection.style.display = 'none'
-    sectionAttackSelection.style.display = 'block'
+// Select your drake
+function selectPlayerDrake() {
+    let sectionDrakeSelection = document.getElementById('select-drake')
+    sectionDrakeSelection.style.display = 'none'
+    sectionAttackSelection.style.display = 'flex'
 
     let inputWarmheart = document.getElementById('warmheart');
     let inputSedgelam = document.getElementById('sedgelam');
     let inputVenstino = document.getElementById('venstino');
-    let spanPlayerPet = document.getElementById('player-pet');
-    let selectPet = true;
+    let spanPlayerDrake = document.getElementById('player-drake-name');
+    let selectDrake = true;
 
     if(inputWarmheart.checked) {
-        spanPlayerPet.innerText = "Warmheart";
-        selectPet = true;
+        spanPlayerDrake.innerText = "Warmheart";
+        selectDrake = true;
     } else if (inputSedgelam.checked) {
-        spanPlayerPet.innerText = "Sedgelam";
-        selectPet = true;
+        spanPlayerDrake.innerText = "Sedgelam";
+        selectDrake = true;
     } else if (inputVenstino.checked) {
-        spanPlayerPet.innerText = "Venstino";
-        selectPet = true;
+        spanPlayerDrake.innerText = "Venstino";
+        selectDrake = true;
     } else {
-        alert('Select one pet');
-        selectPet = false;
+        alert('Select one Drake');
+        selectDrake = false;
     }
 
-    if (selectPet) {
-        selectEnemyPet()
+    if (selectDrake) {
+        selectEnemyDrake()
     }
 };
 
-// Select enemy pet randomly
-function selectEnemyPet() {
-    let randomPet = random(1,3);
-    let spanEnemyPet = document.getElementById('enemy-pet');
+// Select enemy drake randomly
+function selectEnemyDrake() {
+    let randomDrake = random(1,3);
+    let spanEnemyDrake = document.getElementById('enemy-drake-name');
 
-    if (randomPet == 1) {
-        spanEnemyPet.innerText = "Warmheart";
-    } else if (randomPet == 2) {
-        spanEnemyPet.innerText = "Sedgelam";
+    if (randomDrake == 1) {
+        spanEnemyDrake.innerText = "Warmheart";
+    } else if (randomDrake == 2) {
+        spanEnemyDrake.innerText = "Sedgelam";
     } else {
-        spanEnemyPet.innerText = "Venstino";
+        spanEnemyDrake.innerText = "Venstino";
     }
 }
 
@@ -112,27 +139,27 @@ function enemyRandomAttack() {
     fight();
 }
 
-// Fight between pets
+// Fight between Drakes
 function fight() {
     let spanPlayerLifes = document.getElementById('player-lifes'); 
     let spanEnemyLifes = document.getElementById('enemy-lifes');  
 
     if (playerAttack == enemyAttack) {
-        createMessage("TIE");
+        createMessage("No one lost any life");
     } else if(playerAttack == "FIRE" && enemyAttack == "PLANT") {
-        createMessage('You WIN!')
+        createMessage('Your oponent lost a life')
         enemyLifes--
         spanEnemyLifes.innerText = enemyLifes
     } else if(playerAttack == "WATER" && enemyAttack == "FIRE") {
-        createMessage('You WIN!')
+        createMessage('Your oponent lost a life')
         enemyLifes--
         spanEnemyLifes.innerText = enemyLifes
     } else if(playerAttack == "PLANT" && enemyAttack == "WATER") {
-        createMessage('You WIN!')
+        createMessage('Your oponent lost a life')
         enemyLifes--
         spanEnemyLifes.innerText = enemyLifes
     } else {
-        createMessage('You LOSE :C')
+        createMessage('You lost a life')
         playerLifes--
         spanPlayerLifes.innerText = playerLifes
     };
@@ -151,13 +178,10 @@ function checkLifes() {
 
 // New message that shows the attacks of the players
 function createMessage(result) {
-    // let messageSection = document.getElementById('message')
-    // let attackMessage = document.createElement('p');
     let messageSection = document.getElementById('message')
 
-    messageSection.innerHTML = 'Your pet attack with '+playerAttack+', and the enemy pet attack with '+enemyAttack+'. '+result;
+    messageSection.innerHTML = 'Your Drake attack with '+playerAttack+', and the enemy Drake attack with '+enemyAttack+'.<br> '+result;
     
-    // messageSection.appendChild(attackMessage);
 }
 
 // New message that shows who wins

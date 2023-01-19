@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAKENS!</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/img/logo.ico"/>
+
+    <link rel="stylesheet" href="./assets/scss/styles.css">
+    
+    <script src="./assets/js/main.js" defer></script>
+</head>
+<body id="main">
+    <!-- Player select the drake -->
+    <section id="select-drake">
+        <h1 class="title">DRAKENS!</h1>
+
+        <h2 class="subtitle">Choose your draken:</h2>
+
+        <div class="cards">
+            <input type="radio" name="drake" id="warmheart" />
+            <label class="drake-card" for="warmheart">
+                <img src="./assets/img/drakens/fire_draken.jpg" alt="Warmheart">
+            </label>
+
+            <input type="radio" name="drake" id="sedgelam" />
+            <label class="drake-card" for="sedgelam">
+                <img src="./assets/img/drakens/water_draken.jpg" alt="Sedgelam">
+            </label>
+
+            <input type="radio" name="drake" id="venstino" />
+            <label class="drake-card" for="venstino">
+                <img src="./assets/img/drakens/plant_draken.jpg" alt="Venstino">
+            </label>
+        </div>
+
+        <button id="btnDrake">Select your Draken</button>
+    </section>
+    
+    <!-- Choose the attacks -->
+    <section id="select-attack">
+        <h2>Choose your attack:</h2>
+
+        <div class="drakensFighting">
+            <div class="draken-player">
+                <span id="player-drake-name"></span><br><span id="player-lifes">3</span> lives
+            </div>
+            <div class="draken-enemy">
+                <span id="enemy-drake-name"></span><br><span id="enemy-lifes">3</span> lives
+            </div>
+        </div>
+
+        <h3>Choose your attack</h3>
+        <div class="attacksType">
+            <button id="btnFire" class="btnAttacks">Fire 🔥</button>
+            <button id="btnWater" class="btnAttacks">Water 💧</button>
+            <button id="btnPlant" class="btnAttacks">Plant 🍃</button>
+        </div>
+
+        <div class="message-restartGame">
+             <!-- Here we place the message of the attacks -->
+            <section id="message">
+
+            </section>
+            
+            <!-- Restart the game -->
+            <section id="restart">
+                <button id="btnRestart">Restart</button>
+            </section>
+        </div>
+    </section>
+</body>
+</html>
