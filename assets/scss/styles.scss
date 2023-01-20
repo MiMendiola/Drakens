@@ -74,6 +74,17 @@ body{
     }
 }
 
+// Map section
+#view-map {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #map {
+        border: 2px solid black;
+    }
+}
+
 // Attacks section
 #select-attack {
     flex-direction: column;
