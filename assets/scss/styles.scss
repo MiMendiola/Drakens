@@ -74,6 +74,24 @@ body{
     }
 }
 
+// Map section
+#view-map {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        cursor: pointer;
+        font-family: 'Righteous';
+        font-size: 16px;
+        margin: 10px;
+        border-radius: 20px;
+        color: white;
+        background: transparent;
+        border: none;
+    }
+}
+
 // Attacks section
 #select-attack {
     flex-direction: column;
@@ -196,6 +214,13 @@ body{
             align-items: center;
             text-align: center;
         }
+    }
+
+    #view-map div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 

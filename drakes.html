@@ -8,8 +8,6 @@
     <link rel="shortcut icon" type="image/jpg" href="./assets/img/logo.ico"/>
 
     <link rel="stylesheet" href="./assets/scss/styles.css">
-    
-    <script src="./assets/js/main.js" defer></script>
 </head>
 <body id="main">
     <!-- Player select the drake -->
@@ -18,26 +16,37 @@
 
         <h2 class="subtitle">Choose your draken:</h2>
 
-        <div class="cards">
-            <input type="radio" name="drake" id="warmheart" />
+        <div id="cards" class="cards">
+            <!-- <input type="radio" name="drake" id="warmheart" />
             <label class="drake-card" for="warmheart">
                 <img src="./assets/img/drakens/fire_draken.jpg" alt="Warmheart">
             </label>
-
             <input type="radio" name="drake" id="sedgelam" />
             <label class="drake-card" for="sedgelam">
                 <img src="./assets/img/drakens/water_draken.jpg" alt="Sedgelam">
             </label>
-
             <input type="radio" name="drake" id="venstino" />
             <label class="drake-card" for="venstino">
                 <img src="./assets/img/drakens/plant_draken.jpg" alt="Venstino">
-            </label>
+            </label> -->
         </div>
 
         <button id="btnDrake">Select your Draken</button>
     </section>
-    
+
+    <!-- View the map and the drakens -->
+    <section id="view-map">
+        <h2 class="title">Explore Drakens</h2>
+        <canvas id="map"></canvas>
+
+            <button onmouseup="stopMovement()" onmousedown="moveUp()">Up</button>
+        <div>
+            <button onmouseup="stopMovement()" onmousedown="moveLeft()">Left</button>
+            <button onmouseup="stopMovement()" onmousedown="moveDown()">Down</button>
+            <button onmouseup="stopMovement()" onmousedown="moveRight()">Right</button>
+        </div>
+    </section>
+
     <!-- Choose the attacks -->
     <section id="select-attack">
         <h2>Choose your attack:</h2>
@@ -52,10 +61,10 @@
         </div>
 
         <h3>Choose your attack</h3>
-        <div class="attacksType">
-            <button id="btnFire" class="btnAttacks">Fire 🔥</button>
+        <div id="attacksType" class="attacksType">
+            <!-- <button id="btnFire" class="btnAttacks">Fire 🔥</button>
             <button id="btnWater" class="btnAttacks">Water 💧</button>
-            <button id="btnPlant" class="btnAttacks">Plant 🍃</button>
+            <button id="btnPlant" class="btnAttacks">Plant 🍃</button> -->
         </div>
 
         <div class="message-restartGame">
@@ -70,5 +79,7 @@
             </section>
         </div>
     </section>
+
+    <script src="./assets/js/main.js" defer></script>
 </body>
 </html>
