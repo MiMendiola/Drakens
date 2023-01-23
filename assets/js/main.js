@@ -238,20 +238,7 @@ function selectPlayerDrake() {
         selectEnemyDrake()
         extractAttacks(playerDrake)
     }
-
-    // TEST
-
-
     startMap()
-
-
-
-
-
-
-
-
-    // END TEST
 };
 
 function extractAttacks(playerDrakeParam) {
@@ -376,11 +363,6 @@ function createFinalMessage(finalResult) {
     btnRestart.style.display = 'block'
 }
 
-
-
-// TEST
-
-
 function drawCanvas() {
     playerDrakeObj.x += playerDrakeObj.speedX
     playerDrakeObj.y += playerDrakeObj.speedY
@@ -466,12 +448,6 @@ function getObjDrake(playerDrakeParam) {
     }
 }
 
-
-
-
-
-
-// ------------------------
 function reviewColision(enemy) {
     let enemyName = enemy.name
 
@@ -500,16 +476,6 @@ function reviewColision(enemy) {
 
     }
 }
-
-
-
-
-
-
-
-
-
-// END TEST
 
 // Reload the page
 function restartGame() {
