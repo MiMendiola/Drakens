@@ -17,31 +17,24 @@
         <h2 class="subtitle">Choose your draken:</h2>
 
         <div id="cards" class="cards">
-            <!-- <input type="radio" name="drake" id="warmheart" />
-            <label class="drake-card" for="warmheart">
-                <img src="./assets/img/drakens/fire_draken.jpg" alt="Warmheart">
-            </label>
-
-            <input type="radio" name="drake" id="sedgelam" />
-            <label class="drake-card" for="sedgelam">
-                <img src="./assets/img/drakens/water_draken.jpg" alt="Sedgelam">
-            </label>
-
-            <input type="radio" name="drake" id="venstino" />
-            <label class="drake-card" for="venstino">
-                <img src="./assets/img/drakens/plant_draken.jpg" alt="Venstino">
-            </label> -->
+            <!-- Here we place the cards of the drakens (pets) -->
         </div>
 
         <button id="btnDrake">Select your Draken</button>
     </section>
 
-    <!--  -->
-    <!-- <section id="view-map">
-        <h1 class="title">Explore Drakens</h1>
+    <!-- View the map and the drakens -->
+    <section id="view-map">
+        <h2 class="title">Explore Drakens</h2>
         <canvas id="map"></canvas>
-        <button onClick="moveDraken()">Move</button>
-    </section> -->
+
+            <button onmouseup="stopMovement()" onmousedown="moveUp()">Up</button>
+        <div>
+            <button onmouseup="stopMovement()" onmousedown="moveLeft()">Left</button>
+            <button onmouseup="stopMovement()" onmousedown="moveDown()">Down</button>
+            <button onmouseup="stopMovement()" onmousedown="moveRight()">Right</button>
+        </div>
+    </section>
 
     <!-- Choose the attacks -->
     <section id="select-attack">
@@ -58,9 +51,7 @@
 
         <h3>Choose your attack</h3>
         <div id="attacksType" class="attacksType">
-            <!-- <button id="btnFire" class="btnAttacks">Fire 🔥</button>
-            <button id="btnWater" class="btnAttacks">Water 💧</button>
-            <button id="btnPlant" class="btnAttacks">Plant 🍃</button> -->
+            <!-- Here we place the buttons for the attacks -->
         </div>
 
         <div class="message-restartGame">

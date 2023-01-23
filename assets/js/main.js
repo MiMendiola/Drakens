@@ -14,6 +14,7 @@ let inputVenstino
 let drakenOption
 let attacksOptions
 let playerDrake
+let playerDrakeObj
 
 // Lifes
 let playerLifes = 3;
@@ -29,7 +30,25 @@ let btnPlant
 let drakens = []
 
 // Map
-let canva
+const viewMapSection = document.getElementById('view-map')
+const map = document.getElementById('map')
+
+let canva = map.getContext("2d")
+let interval
+let mapBg = new Image()
+mapBg.src = '/assets/img/bgrounds/bground_map.jpg'
+let heightSearched
+let mapWidth = window.innerWidth - 20
+const maxMapWidth = 600
+
+if(mapWidth > maxMapWidth) {
+    mapWidth = maxMapWidth - 20
+}
+
+heightSearched = mapWidth * 600/800
+
+map.width = mapWidth
+map.height = heightSearched
 
 // GETTERS -------------------------------------
 // Body
@@ -58,28 +77,44 @@ const spanPlayerLifes = document.getElementById('player-lifes');
 const spanEnemyLifes = document.getElementById('enemy-lifes');
 
 // Map
-const viewMapSection = document.getElementById('view-map')
-const map = document.getElementById('map')
+
 
 // CLASSES -------------------------------------
 class Draken {
-    constructor(name, img, life) {
+    constructor(name, img, life, imgMap, x=28, y=15) {
+        // random(0, map.width - this.width) random(0, map.height - this.height)
         this.name = name
         this.img = img
         this.life = life
         this.attacks = []
-        this.x = 20
-        this.y = 30
-        this.width = 80
-        this.height = 80
+        this.width = 30
+        this.height = 30
+        this.x = random(0, map.width - this.width)
+        this.y = random(0, map.height - this.height)
         this.mapImg = new Image()
-        this.mapImg.src = img
+        this.mapImg.src = imgMap
+        this.speedX = 0
+        this.speedY = 0
+    }
+
+    drawDraken() {
+        canva.drawImage(
+            this.mapImg,
+            this.x,
+            this.y,
+            this.width,
+            this.height
+        )
     }
 }
 
-let warmheart = new Draken("Warmheart", "/assets/img/drakens/fire_draken.jpg", 90);
-let sedgelam = new Draken("Sedgelam", "/assets/img/drakens/water_draken.jpg", 100);
-let venstino = new Draken("Venstino", "/assets/img/drakens/plant_draken.jpg", 120);
+let warmheart = new Draken("Warmheart", "/assets/img/drakens/fire_draken.jpg", 90, "/assets/img/drakens/fire_draken.jpg");
+let sedgelam = new Draken("Sedgelam", "/assets/img/drakens/water_draken.jpg", 100, "/assets/img/drakens/water_draken.jpg");
+let venstino = new Draken("Venstino", "/assets/img/drakens/plant_draken.jpg", 120, "/assets/img/drakens/plant_draken.jpg");
+
+let warmheartEnemy = new Draken("Warmheart", "/assets/img/drakens/fire_draken.jpg", 90, "/assets/img/drakens/fire_draken.jpg", 95, 140);
+let sedgelamEnemy = new Draken("Sedgelam", "/assets/img/drakens/water_draken.jpg", 100, "/assets/img/drakens/water_draken.jpg", 225, 180);
+let venstinoEnemy = new Draken("Venstino", "/assets/img/drakens/plant_draken.jpg", 120, "/assets/img/drakens/plant_draken.jpg", 115, 20);
 
 warmheart.attacks.push(
     { 
@@ -178,16 +213,8 @@ btnPlayerDrake.disabled = true
 // Select your drake
 function selectPlayerDrake() {
     sectionDrakeSelection.style.display = 'none'
-    // viewMapSection.style.display = 'flex'
-    
-    // TEST
-    // canva = map.getContext("2d")
-    // canva.fillRect(5,15,20,40)
-
-    sectionAttackSelection.style.display = 'flex'
-
-    // END TEST
-
+    viewMapSection.style.display = 'flex'
+  
     let selectDrake = true;
 
     if(inputWarmheart.checked) {
@@ -211,6 +238,7 @@ function selectPlayerDrake() {
         selectEnemyDrake()
         extractAttacks(playerDrake)
     }
+    startMap()
 };
 
 function extractAttacks(playerDrakeParam) {
@@ -335,27 +363,119 @@ function createFinalMessage(finalResult) {
     btnRestart.style.display = 'block'
 }
 
+function drawCanvas() {
+    playerDrakeObj.x += playerDrakeObj.speedX
+    playerDrakeObj.y += playerDrakeObj.speedY
+    canva.clearRect(0,0,map.width,map.height)
+    canva.drawImage(
+        mapBg,
+        0,
+        0,
+        map.width,
+        map.height
+    )
+    playerDrakeObj.drawDraken()
 
-// function drawDraken() {
-//     canva.clearRect(0,0,map.width,map.height)
-//     canva.drawImage(
-//         warmheart.mapImg,
-//         warmheart.x,
-//         warmheart.y,
-//         warmheart.width,
-//         warmheart.height
-//     )
-// }
+    warmheartEnemy.drawDraken()
+    sedgelamEnemy.drawDraken()
+    venstinoEnemy.drawDraken()
 
-function moveDraken() {
-    warmheart.x = warmheart.x + 1
-    drawDraken()
+    if (playerDrakeObj.speedX !== 0 || playerDrakeObj.speedY !== 0) {
+        reviewColision(warmheartEnemy)
+        reviewColision(sedgelamEnemy)
+        reviewColision(venstinoEnemy)
+    }
 }
 
+function moveRight() {
+    playerDrakeObj.speedX = 5
+    drawCanvas()
+}
+function moveLeft() {
+    playerDrakeObj.speedX = -5
+    drawCanvas()
+}
+function moveUp() {
+    playerDrakeObj.speedY = -5
+    drawCanvas()
+}
+function moveDown() {
+    playerDrakeObj.speedY = 5
+    drawCanvas()
+}
 
+function stopMovement() {
+    playerDrakeObj.speedX = 0
+    playerDrakeObj.speedY = 0
+}
 
+function movementDrakenKeyborad(event) {
+    switch (event.key) {
+        case 'ArrowUp':
+            moveUp()
+            break
+    
+        case 'ArrowDown':
+            moveDown()
+            break
+    
+        case 'ArrowLeft':
+            moveLeft()
+            break
+    
+        case 'ArrowRight':
+            moveRight()
+            break
+    
+        default:
+            break
+    }
+}
 
+function startMap() {
+    playerDrakeObj = getObjDrake(playerDrake)
+    interval = setInterval(drawCanvas, 50)
 
+    window.addEventListener('keydown', movementDrakenKeyborad)
+    window.addEventListener('keydown', stopMovement)
+}
+
+function getObjDrake(playerDrakeParam) {
+    for (let i = 0; i < drakens.length; i++) {
+        if (playerDrakeParam == drakens[i].name) {
+            return drakens[i]
+        }
+    }
+}
+
+function reviewColision(enemy) {
+    let enemyName = enemy.name
+
+    const upEnemy = enemy.y
+    const leftEnemy = enemy.x
+    const downEnemy = enemy.y + enemy.height
+    const rightEnemy = enemy.x + enemy.width
+    
+    const upDraken = playerDrakeObj.y
+    const leftDraken = playerDrakeObj.x
+    const downDraken = playerDrakeObj.y + playerDrakeObj.height
+    const rightDraken = playerDrakeObj.x + playerDrakeObj.width
+    if(
+        !(downDraken < upEnemy ||
+        upDraken > downEnemy ||
+        rightDraken < leftEnemy ||
+        leftDraken > rightEnemy)
+    ) {
+        stopMovement()
+        clearInterval(interval)
+        sectionAttackSelection.style.display = 'flex'
+        viewMapSection.style.display = 'none'
+        window.addEventListener('keydown', disabled)
+        window.addEventListener('keyup', disabled)
+        selectEnemyDrake(enemyName)
+
+    }
+}
 
 // Reload the page
 function restartGame() {

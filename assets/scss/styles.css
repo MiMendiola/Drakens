@@ -68,8 +68,15 @@ body {
   align-items: center;
   justify-content: center;
 }
-#view-map #map {
-  border: 2px solid black;
+#view-map button {
+  cursor: pointer;
+  font-family: "Righteous";
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 20px;
+  color: white;
+  background: transparent;
+  border: none;
 }
 
 #select-attack {
@@ -173,6 +180,12 @@ body {
     align-items: center;
     text-align: center;
   }
+  #view-map div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media (min-width: 401px) {
   #btnDrake {
@@ -209,4 +222,4 @@ body {
     width: 60%;
     font-size: 20px;
   }
-}/*# sourceMappingURL=styles.css.map */
+}
