@@ -1,0 +1,35 @@
+{
+  "name": "drakens",
+  "version": "1.0.0",
+  "description": "Web game developed with HTML, CSS, JavaScript and Node.js. Choose your favorite drake and face other drakens in epic fights.",
+  "main": "./assets/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiMendiola/Drakens.git"
+  },
+  "keywords": [
+    "web",
+    "developer",
+    "game",
+    "gaming",
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "js",
+    "nodejs"
+  ],
+  "author": "LMNTdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiMendiola/Drakens/issues"
+  },
+  "homepage": "https://github.com/MiMendiola/Drakens#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

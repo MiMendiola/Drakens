@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Yanone+Kaffeesatz:wght@400;600;700&display=swap');
+
+body{
+    color: white;
+    font-family: 'Righteous';
+    background-image: url(/public/assets/img/bgrounds/bground_main.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+// Select drake section
+#select-drake { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 48px;
+        margin: 30px 0 0;
+    }
+
+    .subtitle {
+        color: white;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 80%;
+
+        .drake-card {
+            width: 80%;
+            box-sizing: border-box;
+            border-radius: 20px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+            }
+        }
+    
+        input { 
+            display: none;
+        }
+        
+        input:checked + label {
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    #btnDrake {
+        cursor: pointer;
+        font-family: 'Righteous';
+        font-size: 16px;
+        width: 40%;
+        height: 10vh;
+        margin-top: 20px;
+        border-radius: 20px;
+        color: white;
+        background: transparent;
+        border: none;
+
+        &:hover {
+            font-weight: bold;
+            background-color: rgba(15, 15, 15, 0.347);
+        }
+    }
+}
+
+// Map section
+#view-map {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        cursor: pointer;
+        font-family: 'Righteous';
+        font-size: 16px;
+        margin: 10px;
+        border-radius: 20px;
+        color: white;
+        background: transparent;
+        border: none;
+    }
+}
+
+// Attacks section
+#select-attack {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        margin: 30px 0 0;
+    }
+
+    h3 {
+        margin-bottom: -20px;
+    }
+
+    .drakensFighting {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 12px;
+
+        .draken-player {
+            width: 50%;
+            padding: 8%;
+            background-color: #18c65e57;
+        }
+        .draken-enemy {
+            width: 50%;
+            padding: 8%;
+            background-color: #c6181857;
+        }
+    }
+
+    .attacksType {
+        width: 80%;
+
+        .btnAttacks {
+            cursor: pointer;
+            font-family: 'Righteous';
+            font-size: 16px;
+            width: 30%;
+            height: 10vh;
+            margin-top: 20px;
+            border-radius: 20px;
+            color: white;
+            background: transparent;
+            border: none;
+        }
+    }
+
+    .message-restartGame {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+
+        #message {
+            width: 70%;
+
+            p {
+                margin-top: 32px;
+                margin-bottom: -15px;
+            }
+        }
+
+        #btnRestart {
+            cursor: pointer;
+            font-family: 'Righteous';
+            font-size: 16px;
+            width: 30%;
+            height: 10vh;
+            border-radius: 20px;
+            color: white;
+            background: transparent;
+            border: none;
+        }
+    }
+}
+
+// Media queries
+@media (max-width: 400px) {
+    #select-drake { 
+        .title {
+            font-size: 32px;
+        }
+    
+        .subtitle {
+            color: white;
+            font-size: 16px;
+        }
+    
+        .cards {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 60%;
+
+            input:checked + label {
+                width: 110%;
+                margin: auto;
+            }
+        }
+    
+        #btnDrake {
+            width: 50%;
+            height: 10vh;
+        }
+    }
+
+    #select-attack {
+        .attacksType {
+            width: 90%;
+        }
+    
+        .message-restartGame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    #view-map div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 401px) {
+    #btnDrake {
+        width: 60% !important;
+        font-size: 18px !important;
+    }
+}
+
+@media (min-width: 600px) {
+    #select-drake { 
+        .title {
+            font-size: 52px;
+        }
+    
+        .subtitle {
+            font-size: 28px;
+        }
+        
+        .cards {
+            width: 60%;
+        }
+
+        #btnDrake {
+            width: 60%;
+            font-size: 20px;
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    #select-drake { 
+        .title {
+            font-size: 56px;
+        }
+    
+        .subtitle {
+            font-size: 28px;
+        }
+        
+        .cards {
+            width: 60%;
+        }
+
+        #btnDrake {
+            width: 60%;
+            font-size: 20px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
