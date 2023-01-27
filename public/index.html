@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAKENS!</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/img/logo.ico"/>
+
+    <link rel="stylesheet" href="./assets/scss/styles.css">
+</head>
+<body id="main">
+    <!-- Player select the drake -->
+    <section id="select-drake">
+        <h1 class="title">DRAKENS!</h1>
+
+        <h2 class="subtitle">Choose your draken:</h2>
+
+        <div id="cards" class="cards">
+            <!-- Here we place the cards of the drakens (pets) -->
+        </div>
+
+        <button id="btnDrake">Select your Draken</button>
+    </section>
+
+    <!-- View the map and the drakens -->
+    <section id="view-map">
+        <h2 class="title">Explore Drakens</h2>
+        <canvas id="map"></canvas>
+
+        <button 
+            ontouchstart="moveUp()" 
+            ontouchend="stopMovement()"
+            onmouseup="stopMovement()" 
+            onmousedown="moveUp()"
+        >Up</button>
+        <div>
+            <button 
+                ontouchstart="moveUp()" 
+                ontouchend="stopMovement()"
+                onmouseup="stopMovement()" 
+                onmousedown="moveLeft()"
+            >Left</button>
+            <button 
+                ontouchstart="moveUp()" 
+                ontouchend="stopMovement()"
+                onmouseup="stopMovement()" 
+                onmousedown="moveDown()"
+            >Down</button>
+            <button 
+                ontouchstart="moveUp()" 
+                ontouchend="stopMovement()"
+                onmouseup="stopMovement()" 
+                onmousedown="moveRight()"
+            >Right</button>
+        </div>
+    </section>
+
+    <!-- Choose the attacks -->
+    <section id="select-attack">
+        <h2>Choose your attack:</h2>
+
+        <div class="drakensFighting">
+            <div class="draken-player">
+                <span id="player-drake-name"></span><br><span id="player-lifes">3</span> lives
+            </div>
+            <div class="draken-enemy">
+                <span id="enemy-drake-name"></span><br><span id="enemy-lifes">3</span> lives
+            </div>
+        </div>
+
+        <h3>Choose your attack</h3>
+        <div id="attacksType" class="attacksType">
+            <!-- Here we place the buttons for the attacks -->
+        </div>
+
+        <div class="message-restartGame">
+             <!-- Here we place the message of the attacks -->
+            <section id="message">
+
+            </section>
+            
+            <!-- Restart the game -->
+            <section id="restart">
+                <button id="btnRestart">Restart</button>
+            </section>
+        </div>
+    </section>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
