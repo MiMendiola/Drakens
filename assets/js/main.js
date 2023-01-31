@@ -36,7 +36,7 @@ const map = document.getElementById('map')
 let canva = map.getContext("2d")
 let interval
 let mapBg = new Image()
-mapBg.src = '/assets/img/bgrounds/bground_map.jpg'
+mapBg.src = '/public/assets/img/bgrounds/bground_map.jpg'
 let heightSearched
 let mapWidth = window.innerWidth - 20
 const maxMapWidth = 600
@@ -108,13 +108,13 @@ class Draken {
     }
 }
 
-let warmheart = new Draken("Warmheart", "/assets/img/drakens/fire_draken.jpg", 90, "/assets/img/drakens/fire_draken.jpg");
-let sedgelam = new Draken("Sedgelam", "/assets/img/drakens/water_draken.jpg", 100, "/assets/img/drakens/water_draken.jpg");
-let venstino = new Draken("Venstino", "/assets/img/drakens/plant_draken.jpg", 120, "/assets/img/drakens/plant_draken.jpg");
+let warmheart = new Draken("Warmheart", "/public/assets/img/drakens/fire_draken.jpg", 90, "/public/assets/img/drakens/fire_draken.jpg");
+let sedgelam = new Draken("Sedgelam", "/public/assets/img/drakens/water_draken.jpg", 100, "/public/assets/img/drakens/water_draken.jpg");
+let venstino = new Draken("Venstino", "/public/assets/img/drakens/plant_draken.jpg", 120, "/public/assets/img/drakens/plant_draken.jpg");
 
-let warmheartEnemy = new Draken("Warmheart", "/assets/img/drakens/fire_draken.jpg", 90, "/assets/img/drakens/fire_draken.jpg", 95, 140);
-let sedgelamEnemy = new Draken("Sedgelam", "/assets/img/drakens/water_draken.jpg", 100, "/assets/img/drakens/water_draken.jpg", 225, 180);
-let venstinoEnemy = new Draken("Venstino", "/assets/img/drakens/plant_draken.jpg", 120, "/assets/img/drakens/plant_draken.jpg", 115, 20);
+let warmheartEnemy = new Draken("Warmheart", "/public/assets/img/drakens/fire_draken.jpg", 90, "/public/assets/img/drakens/fire_draken.jpg", 95, 140);
+let sedgelamEnemy = new Draken("Sedgelam", "/public/assets/img/drakens/water_draken.jpg", 100, "/public/assets/img/drakens/water_draken.jpg", 225, 180);
+let venstinoEnemy = new Draken("Venstino", "/public/assets/img/drakens/plant_draken.jpg", 120, "/public/assets/img/drakens/plant_draken.jpg", 115, 20);
 
 warmheart.attacks.push(
     { 
@@ -182,16 +182,16 @@ btnDrakeBG.forEach((element) => {
     // Add an eventListener for each input
     element.addEventListener('click', () => { 
         if (element.id == 'Warmheart') {
-            bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_fire.jpg')";
+            bodyImg.style.backgroundImage = "url('/public/assets/img/bgrounds/bground_fire.jpg')";
             btnPlayerDrake.innerText = 'WARMHEART'
         } else if (element.id == 'Sedgelam') {
-            bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_water.jpg')";
+            bodyImg.style.backgroundImage = "url('/public/assets/img/bgrounds/bground_water.jpg')";
             btnPlayerDrake.innerText = 'SEDGELAM'
         } else if (element.id == 'Venstino') {
-            bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_plant.jpg')";
+            bodyImg.style.backgroundImage = "url('/public/assets/img/bgrounds/bground_plant.jpg')";
             btnPlayerDrake.innerText = 'VENSTINO'
         } else {
-            bodyImg.style.backgroundImage = "url('/assets/img/bgrounds/bground_main.jpg')";
+            bodyImg.style.backgroundImage = "url('/public/assets/img/bgrounds/bground_main.jpg')";
         }
         btnPlayerDrake.disabled = false
     });
